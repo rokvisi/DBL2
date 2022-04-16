@@ -1,21 +1,18 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-import { execQuery } from '@/utils/sql';
+import type { NextApiRequest, NextApiResponse } from "next";
+import sql from "@/lib/sql";
 
 //* Execute a query passed in the body and return the result.
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const result = await execQuery(JSON.parse(req.body).query);
+    const result = await new Promise((resolve, reject) => {
+      sql!.query(JSON.parse(req.body).query, function parseResult(err, results) {
+        if (err) reject(err);
+        else resolve(results);
+      });
+    });
+
     res.status(200).json({ result });
   } catch (error) {
-    console.log(
-      'Encountered error when executing:',
-      JSON.parse(req.body).query
-    );
-    console.log(error);
     res.status(500).json({ error });
   }
 }

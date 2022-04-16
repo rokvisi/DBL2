@@ -1,14 +1,31 @@
-import Link from 'next/link';
+import Link from "next/link";
+
+const TABLES = [
+  "apdovanimas_tipas",
+  "apdovanojimai",
+  "irasai",
+  "komentarai",
+  "lentos",
+  "lentosrodoreklamos",
+  "reklamos",
+  "roles",
+  "saukimai",
+  "skelbimai",
+  "vartotojai",
+  "vartotojaidraugaujavartotojai",
+  "vartotojaituriroles",
+].sort();
 
 export default function Index() {
   return (
-    <div className="mx-40 my-20">
-      <h1 className="mb-10 text-2xl text-center">Pasirinkite lentelę</h1>
-      <ul>
-        <Link href="/irasai" passHref>
-          <li className="inline-block p-5 bg-gray-400 cursor-pointer">irasai</li>
-        </Link>
-      </ul>
-    </div>
+    <ul>
+      {TABLES.map((table) => {
+        return (
+          <Link key={table} href={`/${table}`} passHref>
+            <li className="inline-block w-[300px] p-5 m-4 bg-gray-400 cursor-pointer text-center rounded hover:bg-gray-300">{table}</li>
+          </Link>
+        );
+      })}
+    </ul>
   );
 }
