@@ -23,10 +23,10 @@ export function ISODateToNormalDate(dateStr: string) {
   const date = new Date(dateStr);
 
   let day: number | string = date.getDay();
-  if (day < 10) day = `0${day}`;
+  if (day + 1 < 10) day = `0${day+1}`;
 
   let month: number | string = date.getMonth();
-  if (month < 10) month = `0${month}`;
+  if (month + 1 < 10) month = `0${month+1}`;
 
   return `${date.getFullYear()}-${month}-${day}`;
 }

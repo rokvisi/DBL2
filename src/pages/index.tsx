@@ -7,7 +7,10 @@ export default function Index() {
       {TABLES.map((table) => {
         return (
           <Link key={table.href} href={table.href} passHref>
-            <span className="inline-block p-4 bg-gray-400 cursor-pointer text-center rounded hover:bg-gray-300">{`${table.href.substring(1)} ${table.info}`}</span>
+            <span className="inline-block py-2 bg-gray-400 cursor-pointer text-center rounded hover:bg-gray-300">
+              <p>{table.href.substring(1)}</p>
+              <p className="text-xs">({table.info})</p>            
+            </span>
           </Link>
         );
       })}

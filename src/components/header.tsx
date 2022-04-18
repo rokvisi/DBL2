@@ -31,14 +31,17 @@ function Breadcrumbs() {
   );
 }
 
-export default function Headera() {
+export default function Header() {
   return (
     <div className="flex mb-10 items-center text-xl">
       <Breadcrumbs />
       <ul className="inline-block ml-auto space-x-4">
         {TABLES.map((table) => (
-          <Link href={table.href}>
-            <li className="inline-block cursor-pointer hover:underline">{table.href.substring(1)}</li>
+          <Link href={table.href} key={table.href}>
+            <li className="inline-block cursor-pointer group">
+              <p className="text-center group-hover:underline">{table.href.substring(1)}</p>
+              <p className="text-center text-sm italic">{table.info}</p>
+            </li>
           </Link>
         ))}
       </ul>

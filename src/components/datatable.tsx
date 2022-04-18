@@ -14,19 +14,19 @@ export default function DataTable({ table, pk, columns, entries, removeFromTable
         <thead className="font-medium text-gray-700 border-b border-black text-left">
           <tr>
             {columns.map((column: any) => (
-              <th className="p-2" key={column}>
+              <th className="p-2 truncate max-w-[100px]" key={column}>
                 {column}
               </th>
             ))}
-            <th className="p-2">Redaguoti</th>
-            <th className="p-2">Ištrinti</th>
+            <th className="p-2">{" "}</th>
+            <th className="p-2">{" "}</th>
           </tr>
         </thead>
         <tbody>
           {entries.map((entry: any) => (
             <tr className="even:bg-gray-200" key={entry[pk]}>
               {Object.entries(entry).map(([key, value]: any) => (
-                <td key={key+value} className="p-2 truncate max-w-[150px]">
+                <td key={key+value} className="p-2 truncate max-w-[100px]">
                   {value}
                 </td>
               ))}
