@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Irasas } from "@/types/database";
+import { Skelbimas } from "@/types/database";
 import { runQuery } from "@/utils/common";
-import { deleteIrasas, normalizeIrasas } from "@/utils/database";
+import { deleteSkelbimas, normalizeSkelbimas } from "@/utils/database";
 import DataTable from "@/components/datatable";
 
-const TABLENAME = "irasai";
+const TABLENAME = "skelbimai";
 
 export async function getServerSideProps() {
   const [columns, columnsError] = await runQuery(`SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'${TABLENAME}'`);
@@ -13,20 +13,20 @@ export async function getServerSideProps() {
   return {
     props: {
       columns: columnsError ? [] : columns.map((columnData: any) => columnData.COLUMN_NAME),
-      initialEntries: entriesError ? [] : (entries as Irasas[]).map(normalizeIrasas),
+      initialEntries: entriesError ? [] : (entries as Skelbimas[]).map(normalizeSkelbimas),
     },
   };
 }
 
-export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Irasas[] }) {
-  const [entries, setEntries] = useState<Irasas[]>(initialEntries);
+export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Skelbimas[] }) {
+  const [entries, setEntries] = useState<Skelbimas[]>(initialEntries);
 
   async function removeFromTable(id: number) {
     //* Delete the entry.
-    await deleteIrasas(id);
+    await deleteSkelbimas(id);
 
     //* Reload the table.
-    await runQuery(`SELECT * FROM ${TABLENAME}`).then((result) => setEntries(result[0].map(normalizeIrasas)));
+    await runQuery(`SELECT * FROM ${TABLENAME}`).then((result) => setEntries(result[0].map(normalizeSkelbimas)));
   }
 
   return <DataTable table={TABLENAME} pk="id" columns={columns} entries={entries} removeFromTable={removeFromTable} insertable={true} />

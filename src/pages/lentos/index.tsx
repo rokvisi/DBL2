@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Irasas } from "@/types/database";
+import { Lenta } from "@/types/database";
 import { runQuery } from "@/utils/common";
-import { deleteIrasas, normalizeIrasas } from "@/utils/database";
+import { deleteLenta } from "@/utils/database";
 import DataTable from "@/components/datatable";
 
-const TABLENAME = "irasai";
+const TABLENAME = "lentos";
 
 export async function getServerSideProps() {
   const [columns, columnsError] = await runQuery(`SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'${TABLENAME}'`);
@@ -13,20 +13,20 @@ export async function getServerSideProps() {
   return {
     props: {
       columns: columnsError ? [] : columns.map((columnData: any) => columnData.COLUMN_NAME),
-      initialEntries: entriesError ? [] : (entries as Irasas[]).map(normalizeIrasas),
+      initialEntries: entriesError ? [] : (entries as Lenta[]),
     },
   };
 }
 
-export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Irasas[] }) {
-  const [entries, setEntries] = useState<Irasas[]>(initialEntries);
+export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Lenta[] }) {
+  const [entries, setEntries] = useState<Lenta[]>(initialEntries);
 
   async function removeFromTable(id: number) {
     //* Delete the entry.
-    await deleteIrasas(id);
+    await deleteLenta(id);
 
     //* Reload the table.
-    await runQuery(`SELECT * FROM ${TABLENAME}`).then((result) => setEntries(result[0].map(normalizeIrasas)));
+    await runQuery(`SELECT * FROM ${TABLENAME}`).then((result) => setEntries(result[0]));
   }
 
   return <DataTable table={TABLENAME} pk="id" columns={columns} entries={entries} removeFromTable={removeFromTable} insertable={true} />
