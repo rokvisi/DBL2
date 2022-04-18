@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Lenta } from "@/types/database";
-import { runQuery } from "@/utils/common";
+import { runQuery } from "@/utils/database";
 import { deleteLenta } from "@/utils/database";
 import DataTable from "@/components/datatable";
 
@@ -18,7 +18,7 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Lenta[] }) {
+export default function Lentos({ columns, initialEntries }: { columns: string[]; initialEntries: Lenta[] }) {
   const [entries, setEntries] = useState<Lenta[]>(initialEntries);
 
   async function removeFromTable(id: number) {

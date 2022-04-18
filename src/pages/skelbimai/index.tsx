@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Skelbimas } from "@/types/database";
-import { runQuery } from "@/utils/common";
+import { runQuery } from "@/utils/database";
 import { deleteSkelbimas, normalizeSkelbimas } from "@/utils/database";
 import DataTable from "@/components/datatable";
 
@@ -18,7 +18,7 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Skelbimas[] }) {
+export default function Skelbimai({ columns, initialEntries }: { columns: string[]; initialEntries: Skelbimas[] }) {
   const [entries, setEntries] = useState<Skelbimas[]>(initialEntries);
 
   async function removeFromTable(id: number) {

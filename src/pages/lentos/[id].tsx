@@ -1,12 +1,12 @@
 import { Lenta } from "@/types/database";
-import { runQuery } from "@/utils/common";
+import { runQuery } from "@/utils/database";
 import { Field, Form, Formik } from "formik";
 
 const TABLENAME = "lentos";
 
 export async function getServerSideProps({ query }: any) {
   //* Get the inspected entry.
-  const [entries, entriesError] = await runQuery(`SELECT * FROM ${TABLENAME} WHERE id = ${query.id}`);
+  const [entries] = await runQuery(`SELECT * FROM ${TABLENAME} WHERE id = ${query.id}`);
 
   return {
     props: {
@@ -29,22 +29,22 @@ export default function EditLenta({ entry }: { entry: Lenta}) {
       {({ isSubmitting }) => (
         <Form>
           <label htmlFor="id">ID</label>
-          <Field className="block p-1 mb-4 border border-gray-500 w-full bg-gray-200" name="id" type="text" disabled={true} />
+          <Field className="block w-full p-1 mb-4 bg-gray-200 border border-gray-500" name="id" type="text" disabled={true} />
 
           <label htmlFor="pavadinimas">Pavadinimas</label>
-          <Field className="block p-1 mb-4 border border-gray-500 w-full" name="pavadinimas" type="text" />
+          <Field className="block w-full p-1 mb-4 border border-gray-500" name="pavadinimas" type="text" />
 
           <label htmlFor="baneris">Baneris</label>
-          <Field className="block p-1 mb-4 border border-gray-500 w-full" name="baneris" type="text" />
+          <Field className="block w-full p-1 mb-4 border border-gray-500" name="baneris" type="text" />
 
-          <label htmlFor="aprasymas">Aprasymas</label>
-          <Field className="block p-1 mb-4 border border-gray-500 w-full" name="aprasymas" type="text" />
+          <label htmlFor="aprasymas">Aprašymas</label>
+          <Field className="block w-full p-1 mb-4 border border-gray-500" name="aprasymas" type="text" />
 
-          <label htmlFor="dienosZinute">Dienos Zinute</label>
-          <Field className="block p-1 mb-4 border border-gray-500 w-full" name="dienosZinute" type="text" />
+          <label htmlFor="dienosZinute">Dienos žinutė</label>
+          <Field className="block w-full p-1 mb-4 border border-gray-500" name="dienosZinute" type="text" />
 
-          <label htmlFor="sriftas">Sriftas</label>
-          <Field className="block p-1 mb-4 border border-gray-500 w-full" name="sriftas" type="text" />
+          <label htmlFor="sriftas">Šriftas</label>
+          <Field className="block w-full p-1 mb-4 border border-gray-500" name="sriftas" type="text" />
 
           <button className={`p-2 font-bold text-black bg-gray-400 hover:bg-gray-300 ${isSubmitting && "cursor-not-allowed bg-gray-900 text-white hover:bg-gray-900"}`} type="submit">
             {isSubmitting ? "Saugoma..." : "Išsaugoti"}

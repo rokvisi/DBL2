@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Irasas } from "@/types/database";
-import { runQuery } from "@/utils/common";
+import { runQuery } from "@/utils/database";
 import { deleteIrasas, normalizeIrasas } from "@/utils/database";
 import DataTable from "@/components/datatable";
 

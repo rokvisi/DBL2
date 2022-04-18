@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Vartotojas } from "@/types/database";
-import { runQuery } from "@/utils/common";
+import { runQuery } from "@/utils/database";
 import { deleteVartotojas, normalizeVartotojas } from "@/utils/database";
 import DataTable from "@/components/datatable";
 
@@ -18,7 +18,7 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Irasai({ columns, initialEntries }: { columns: string[]; initialEntries: Vartotojas[] }) {
+export default function Vartotojai({ columns, initialEntries }: { columns: string[]; initialEntries: Vartotojas[] }) {
   const [entries, setEntries] = useState<Vartotojas[]>(initialEntries);
 
   async function removeFromTable(slapyvardis: string) {
