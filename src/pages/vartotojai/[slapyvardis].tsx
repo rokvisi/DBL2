@@ -5,7 +5,6 @@ import { Field, Form, Formik } from "formik";
 const TABLENAME = "vartotojai";
 
 export async function getServerSideProps({ query }: any) {
-  //* Get the inspected entry.
   const [entries] = await runQuery(`SELECT * FROM ${TABLENAME} WHERE slapyvardis = '${query.slapyvardis}'`);
 
   return {

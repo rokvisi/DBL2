@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Lenta } from "@/types/database";
 import { runQuery } from "@/utils/database";
-import { deleteLenta } from "@/utils/database";
+import { deleteLenta } from "@/utils/database_delete";
 import DataTable from "@/components/datatable";
 
 const TABLENAME = "lentos";
@@ -29,5 +29,5 @@ export default function Lentos({ columns, initialEntries }: { columns: string[];
     await runQuery(`SELECT * FROM ${TABLENAME}`).then((result) => setEntries(result[0]));
   }
 
-  return <DataTable table={TABLENAME} pk="id" columns={columns} entries={entries} removeFromTable={removeFromTable} insertable={true} />
+  return <DataTable table={TABLENAME} pk="id" columns={columns} entries={entries} removeFromTable={removeFromTable} insertable={true} />;
 }

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Irasas } from "@/types/database";
 import { runQuery } from "@/utils/database";
-import { deleteIrasas, normalizeIrasas } from "@/utils/database";
+import { normalizeIrasas } from "@/utils/database";
 import DataTable from "@/components/datatable";
+import { deleteIrasas } from "@/utils/database_delete";
 
 const TABLENAME = "irasai";
 

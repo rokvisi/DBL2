@@ -6,10 +6,7 @@ import { Field, Form, Formik } from "formik";
 const TABLENAME = "skelbimai";
 
 export async function getServerSideProps({ query }: any) {
-  //* Get the inspected entry.
   const [entries] = await runQuery(`SELECT * FROM ${TABLENAME} WHERE id = ${query.id}`);
-
-  //* Get all possible foreign keys for each dependency.
   const [lentosIds] = await runQuery(`SELECT id FROM lentos`);
 
   return {
@@ -51,7 +48,7 @@ export default function EditSkelbimas({ entry, lentosPKs }: { entry: Skelbimas; 
           <label htmlFor="fk_Lentaid">Lentos ID</label>
           <Field className="block w-full p-1 mb-4 border border-gray-500" as="select" name="fk_Lentaid">
             {lentosPKs.map((lentaPK) => (
-              <option value={lentaPK}>{lentaPK}</option>
+              <option key={lentaPK} value={lentaPK}>{lentaPK}</option>
             ))}
           </Field>
 

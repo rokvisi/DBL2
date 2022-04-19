@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Skelbimas } from "@/types/database";
 import { runQuery } from "@/utils/database";
-import { deleteSkelbimas, normalizeSkelbimas } from "@/utils/database";
+import { normalizeSkelbimas } from "@/utils/database";
 import DataTable from "@/components/datatable";
+import { deleteSkelbimas } from "@/utils/database_delete";
 
 const TABLENAME = "skelbimai";
 
@@ -29,5 +30,5 @@ export default function Skelbimai({ columns, initialEntries }: { columns: string
     await runQuery(`SELECT * FROM ${TABLENAME}`).then((result) => setEntries(result[0].map(normalizeSkelbimas)));
   }
 
-  return <DataTable table={TABLENAME} pk="id" columns={columns} entries={entries} removeFromTable={removeFromTable} insertable={true} />
+  return <DataTable table={TABLENAME} pk="id" columns={columns} entries={entries} removeFromTable={removeFromTable} insertable={true} />;
 }

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Vartotojas } from "@/types/database";
 import { runQuery } from "@/utils/database";
-import { deleteVartotojas, normalizeVartotojas } from "@/utils/database";
+import { normalizeVartotojas } from "@/utils/database";
 import DataTable from "@/components/datatable";
+import { deleteVartotojas } from "@/utils/database_delete";
 
 const TABLENAME = "vartotojai";
 
