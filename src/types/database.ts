@@ -13,7 +13,7 @@ export const IrasasDefaults: Irasas = {
   id: 0,
   pavadinimas: "",
   tekstas: "",
-  sukurimoData: "0001-01-01",
+  sukurimoData: "1901-01-01",
   redaguota: false,
   teigiamiTaskai: 0,
   neigiamiTaskai: 0,
@@ -50,7 +50,7 @@ export const SkelbimasDefaults: Skelbimas = {
   id: 0,
   pavadinimas: "",
   tekstas: "",
-  sukurimoData: "",
+  sukurimoData: "1901-01-01",
   redaguota: false,
   fk_Lentaid: 0
 }
@@ -75,15 +75,15 @@ export const VartotojasDefaults: Vartotojas = {
   vardas: "",
   pavarde: "",
   pastas: "",
-  gimimoData: "",
+  gimimoData: "1901-01-01",
   lytis: false,
   salis: "",
   parasas: "",
-  paskutiniKartaMatytas: "",
+  paskutiniKartaMatytas: "1901-01-01",
   slaptazodis: "",
   taskai: 0,
   ispejimai: 0,
-  nuotrauka: ""
+  nuotrauka: "default.webp"
 }
 
 export type Saukimas = {
