@@ -92,7 +92,7 @@ export default function InsertIrasas({ lentosPKs, vartotojaiPKs }: { lentosPKs: 
                 return (
                   <>
                     {form.values.komentarai.map((_: Komentaras, index: number) => (
-                      <div key={index} className="grid grid-cols-[repeat(9,minmax(80px,max-content))] items-end gap-4 mb-4">
+                      <div key={index} className="grid grid-cols-[repeat(7,minmax(80px,max-content))] items-end gap-4 mb-4">
                         <span>
                           <label className="block" htmlFor={`komentarai[${index}].id`}>
                             ID
