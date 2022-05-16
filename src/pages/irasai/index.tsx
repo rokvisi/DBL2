@@ -9,7 +9,7 @@ const TABLENAME = "irasai";
 
 export async function getServerSideProps() {
   const [columns, columnsError] = await runQuery(`SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'${TABLENAME}'`);
-  let [entries, entriesError] = await runQuery(`SELECT * FROM ${TABLENAME}`);
+  const [entries, entriesError] = await runQuery(`SELECT * FROM ${TABLENAME}`);
 
   return {
     props: {
