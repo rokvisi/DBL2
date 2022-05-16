@@ -2,7 +2,6 @@ import { Irasas, Skelbimas, Vartotojas } from "@/types/database";
 import { ISODateToNormalDate } from "./common";
 
 export async function runQuery(query: string) {
-  //* Fetch the local api to access the database.
   const databaseResponse = await fetch("http://localhost:3000/api/database", {
     method: "POST",
     body: JSON.stringify({

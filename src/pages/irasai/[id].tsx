@@ -59,14 +59,14 @@ export default function EditIrasas({ entry, lentosPKs, vartotojaiPKs }: { entry:
           <label htmlFor="fk_Lentaid">Lentos ID</label>
           <Field className="block w-full p-1 mb-4 border border-gray-500" as="select" name="fk_Lentaid">
             {lentosPKs.map((lentaPK) => (
-              <option value={lentaPK}>{lentaPK}</option>
+              <option key={lentaPK} value={lentaPK}>{lentaPK}</option>
             ))}
           </Field>
 
           <label htmlFor="fk_Vartotojasslapyvardis">Vartotojo slapyvardis</label>
           <Field className="block w-full p-1 mb-4 border border-gray-500" as="select" name="fk_Vartotojasslapyvardis">
             {vartotojaiPKs.map((vartotojasPK) => (
-              <option value={vartotojasPK}>{vartotojasPK}</option>
+              <option key={vartotojasPK} value={vartotojasPK}>{vartotojasPK}</option>
             ))}
           </Field>
 
