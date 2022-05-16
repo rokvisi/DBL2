@@ -95,7 +95,7 @@ export default function Ataskaita() {
         <DataTable
           table=""
           pk="slapyvardis"
-          columns={["slapyvardis", "role", "komentaru kiekis", "komentarai tik ant irasu", "komentarai tik ant skelbimu", "NET komentaru taskai"]}
+          columns={["Slapyvardis", "Rolė", "Komentarų Kiekis", "K. K. ant įrašų", "K. K. ant skelbimų", "NET komentarų taškai"]}
           entries={entries}
           removeFromTable={() => {}}
           insertable={false}
