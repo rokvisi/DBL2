@@ -33,18 +33,26 @@ function Breadcrumbs() {
 
 export default function Header() {
   return (
-    <div className="flex mb-10 items-center text-xl">
-      <Breadcrumbs />
-      <ul className="inline-block ml-auto space-x-4">
-        {TABLES.map((table) => (
-          <Link href={table.href} key={table.href}>
-            <li className="inline-block cursor-pointer group">
-              <p className="text-center group-hover:underline">{table.href.substring(1)}</p>
-              <p className="text-center text-sm italic">{table.info}</p>
+    <div className="mb-10 text-xl">
+      <div className="flex items-center">
+        <Breadcrumbs />
+        <ul className="flex ml-auto space-x-4">
+          <Link href="/ataskaita">
+            <li className="inline-block px-4 my-auto border-r cursor-pointer">
+              Ataskaita
             </li>
           </Link>
-        ))}
-      </ul>
+
+          {TABLES.map((table) => (
+            <Link href={table.href} key={table.href}>
+              <li className="inline-block cursor-pointer group">
+                <p className="text-center group-hover:underline">{table.href.substring(1)}</p>
+                <p className="text-sm italic text-center">{table.info}</p>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
